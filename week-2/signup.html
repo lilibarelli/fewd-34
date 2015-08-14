@@ -15,10 +15,10 @@
       }
       header {
         background-color: #C4C4C4;
-        height: 100px;
         border-style: solid;
         border-width: 1px;
         border-color: grey;
+        overflow: auto;
       }
       ul{
         float: right;
@@ -61,6 +61,7 @@
         box-shadow: -4px 17px 64px -8px #888888;
         line-height: 200%;
 
+
       }
       footer{
         margin-top: 30px;
@@ -86,7 +87,20 @@
       }
       .buttonblue {
         background-color: blue;
+        padding: 10px 20px;
+        border-style: solid;
+        border: 1px;
+        border-radius: 5px;
+        color: white;
+        font-family: 'Lucida Grande';
+        font-size: 14px;
+
       }
+
+      .checkbox {
+        position: right;
+      }
+
   </style>
 
   <body>
@@ -95,27 +109,45 @@
         ">
         <ul>
           <li>
-              <button class="button" href="http://lilibarelli.github.io/fewd-34/week-2/product/">Product</button>
+            <a class="button" href="product.html">Product</a>
           </li>
-          <li class ="sign-up">
-            <button class="button buttonblue" href="http://lilibarelli.github.io/fewd-34/week-2/sign-up/">Sign Up</button>
+          <li>
+            <a class="buttonblue" href="signup.html">Sign Up</a>
           </li>
         </ul>
       </header>
       <main>
         <h2><strong>Sign Up</strong></h2>
-        <form action="demo_form.asp">
-          First name: <input type="text" name="fname"><br>
-          Last name: <input type="text" name="lname"><br>
-          Email: <input type="text" name="lemail"><br>
-          Password: <input type="text" name="lpassword"><br>
-        <input type="checkbox" value="Submit">
-        Agree to our terms of service
-        </form>
-        <p> <button class="button" href="#">Sign Up</button>
-        </p>
+        <table>
+        <tr>
+            <form action="demo_form.asp">
+                <td>First name: </td>
+                <td>
+                <input type="text" name="fname"><br>
+                </td>
+        </tr>
+        <tr>
+        <td>Last name:</td>
+        <td><input type="text" name="lname"><br></td>
+        </tr>
+        <tr>
+          <td>Last name:</td>
+          <td> <input type="text" name="lname"><br></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><input type="text" name="lemail"><br></td>
+        <tr>
+          <td>Password:</td>
+          <td><input type="text" name="lpassword"><br></td>
+        </tr>
+                <td><input type="checkbox" value="Submit"><br></td>
+                <td>Agree to our terms of service</td>
+            </form>
+        </tr>
+      </table>
+      <button> Submit</button>
       </main>
-
     <footer>
         <hr>
         <p>Copyright, 2015
