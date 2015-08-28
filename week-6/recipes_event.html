@@ -1,0 +1,67 @@
+<script>
+  //JS recipes
+
+  //Adding changing an element's value
+
+  // If the element is already on the page:
+
+  var el = document.querySelector("img");
+  el.setAttribute("src", "http://example.com/logo.png");
+
+  // If the element is NOT on the page (new el):
+
+  var el = document.createElement ("img");
+  el.setAttribute ("src", "http://example.com/logo.png");
+
+  //Adding an element ot the page with textcontent:
+  var el = document.createElement(NAME);
+  el.textcontent= TEXT,
+  var parentEl = document.querySelector(PARENT)
+  parentEl.appendChild(EL)
+
+
+  //an actual example:
+  var name= "li";
+  var text = "get milk";
+  var parent = "ul";
+
+  var el = document.createElement(name);
+  el.textcontent= text,
+  var parentEl = document.querySelector(parent)
+  parentEl.appendChild(el)
+
+
+  // make it an actual function
+  function addElement (name, parent, text){
+    var el = document.createElement(name);
+    el.textContent= text;
+    car parentEl= document.querySelector(parent);
+    parentEl.appendChild(el);
+  }
+
+  // calculator
+  var e1 = document.querySelector("input")
+  var e2 = document.querySelector("input")
+  var r1 = document.querySelector("input")
+
+  r1.value = e1.value + e2.value
+  // to avoid addng to strings of numbers:
+  var n1 = parseInt (e1.value)
+  var n2 = parseInt (e1.value)
+  r1.value = n1 + n2
+
+  // final :
+  function add (){
+    var e1 = document.querySelector("input")
+    var e2 = document.querySelector("input")
+    var r1 = document.querySelector("input")
+    var n1 = parseInt (e1.value)
+    var n2 = parseInt (e1.value)
+    r1.value = n1 + n2
+  }
+
+  // to attach it to the + , need event listener > addEventListener (name of event, name of function)
+  var addbutton = document.querySelector(".add-button");
+  addButton.addEventListener ("click", add);
+
+  </script>
