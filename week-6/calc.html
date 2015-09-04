@@ -1,0 +1,102 @@
+
+<style>
+* { box-sizing: border-box; }
+body { font-size: 20px; font-family: sans-serif; }
+
+td { width: 100px; text-align: center; }
+.placeholder, button { width: 100%; }
+.placeholder { height: 23px; border: 1px solid #bababa; border-radius: 3px; }
+button { cursor: pointer; border: 1px solid #58c0f5; color: #58c0f5; background-color: white; font: inherit; }
+button { background-color: #58c0f5; color: white; border-radius: 3px; }
+</style>
+
+<table>
+  <tr>
+    <td>
+      <input type="text" class="first-operand placeholder">
+    </td>
+    <td>
+      <input type="text" class="second-operand placeholder">
+    </td>
+    <td>
+      =
+    </td>
+    <td>
+      <input type="text" class="result placeholder" disabled>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button class="add-button inverted-button">+</button>
+    </td>
+    <td>
+      <button class="subtract-button inverted-button">-</button>
+    </td>
+    <td>
+      <button class="multiply-button inverted-button">*</button>
+    </td>
+    <td>
+      <button class="divide-button inverted-button">/</button>
+    </td>
+  </tr>
+</table>
+
+<script>
+// Your code goes here.
+var firstOperand = document.querySelector(".first-operand");
+var secondOperand = document.querySelector(".second-operand");
+var result = document.querySelector(".result");
+
+var addBtn = document.querySelector(".add-button");
+var subtractBtn = document.querySelector (".subtract-button");
+var multiplyBtn = document.querySelector (".multiply-button");
+var divideBtn = document.querySelector (".divide-button");
+
+  addBtn.addEventListener("click", addition);
+  subtractBtn.addEventListener("click", subtraction);
+  multiplyBtn.addEventListener("click", multiplication);
+  divideBtn.addEventListener("click", division);
+
+  function addition() {
+  result.value = parseInt(firstOperand.value) + parseInt(secondOperand.value);
+  }
+
+  function subtraction() {
+  result.value = parseInt(firstOperand.value) - parseInt(secondOperand.value);
+  }
+
+  function multiplication() {
+  result.value = parseInt(firstOperand.value) * parseInt(secondOperand.value);
+  }
+
+  function division() {
+  result.value = parseInt(firstOperand.value) / parseInt(secondOperand.value);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function add (){
+  var e1 = document.querySelector("input")
+  var e2 = document.querySelector("input")
+  var r1 = document.querySelector("input")
+  var n1 = parseInt (e1.value)
+  var n2 = parseInt (e1.value)
+  r1.value = n1 + n2
+  var addbutton = document.querySelector(".add-button");
+  addButton.addEventListener ("click", add);
+}
+</script>

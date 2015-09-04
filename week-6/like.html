@@ -1,0 +1,11 @@
+<script>
+function like (){
+  var likeCount = document.querySelector (".like-count");
+  var newNumberOfLikes = parseInt (likeCount.textContent) +1;
+  likeCount.textContent = newNumberOfLikes;
+
+}
+var whatwereActualluListeningTo = document.querySelector (".like");
+whatwereActualluListeningTo.addEventListener ("click", like);
+
+</script>

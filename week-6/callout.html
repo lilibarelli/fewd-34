@@ -1,0 +1,28 @@
+<div class="comment">
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</div>
+
+<div class="triangle">
+ </div>
+
+<style>
+.comment {
+  position: relative;
+  background-color: rgb(218, 238, 172);
+  padding: 1em;
+  margin-bottom: 2em;
+  border-radius: .5em
+}
+
+.comment::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width:0;
+  height: 0;
+  border: 1em solid transparent;
+  border-top-color: rgb(250, 238, 172);
+  bottom: -2em;
+}
+
+</style>
