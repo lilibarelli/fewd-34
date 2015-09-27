@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel='stylesheet' href='fullcalendar.css' />
+<script src='lib/jquery.min.js'></script>
+<script src='lib/moment.min.js'></script>
+<script src='fullcalendar.js'></script>
+
+    <meta charset="utf-8">
+    <title>
+Lili's Calendar
+    </title>
+  </head>
+  <body>
+    <main>
+      <div id='calendar'></div>
+    </main>
+      <script>
+      $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+
+        })// if wanna hide certain days
+
+        // if click once show 🚶
+        // if click twice show 🏃
+        // if click three times show 🏊
+        // if click 4 times show 💪
+
+
+        $(".fc-day").on("click", function(event) {
+          var day = event.target;
+
+          if (day.textContent == '') {
+            day.textContent = '🚶';
+          } else if (day.textContent == '🚶') {
+            day.textContent = '🏃';
+          } else if (day.textContent == '🏃') {
+            day.textContent = '🏊';
+          } else if (day.textContent == '🏃') {
+             day.textContent = '🏊';
+          } else if (day.textContent == '🏊') {
+              day.textContent = '💪';
+}
+})
+
+
+
+    })
+    </script>
+  </body>
+</html>
