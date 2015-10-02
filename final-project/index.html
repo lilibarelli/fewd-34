@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel='stylesheet' href='fullcalendar.css' />
+<script src='lib/jquery.min.js'></script>
+<script src='lib/moment.min.js'></script>
+<script src='fullcalendar.js'></script>
+<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+
+<!-- Latest compiled and minified CSS -->
+
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    line-height: 1.4em;
+    background-image: url("coffee.png");
+    background-size:cover;
+  }
+
+  header {
+    font-size: 80px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  main {
+    margin: 2em auto;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 2em 3em;
+    max-width: 600px;
+
+  }
+
+  .emoji{
+    font-size: 20px;
+    text-align: center;
+
+
+  }
+
+#sumactivity{
+  padding-top: 50px;
+  text-align: center;
+}
+
+.emoji{
+  font-size: 30px;
+}
+  </style>
+
+    <meta charset="utf-8">
+    <title>
+Lili's Calendar
+    </title>
+  </head>
+  <body>
+    <header>My No-Lazy Calendar </header>
+    <main>
+
+
+      <div id='calendar'></div>
+      <div id='sumactivity'></div>
+      Total Monthly:
+    </main>
+
+      <script>
+      $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+
+        })// if wanna hide certain days
+
+        // if click once show 🚶
+        // if click twice show 🏃
+        // if click three times show 🏊
+        // if click 4 times show 💪
+
+
+        $(".fc-day").on("click", function(event) {
+          var day = event.target;
+
+
+
+          if (day.textContent == '') {
+            day.textContent = '🚶';
+          } else if (day.textContent == '🚶') {
+
+            day.innerHTML='<div class= "emoji">🏃</div>'
+            saveRunningDate(day.getAttribute('data-date'));
+          } else if (day.textContent == '🏃') {
+            day.textContent = '🏊';
+            saveSwimmingDate(day.getAttribute('data-date'));
+          } else if (day.textContent == '🏊') {
+              day.textContent = '💪';
+          } else if (day.textContent == '💪') {
+                day.textContent = '';
+          }
+        })
+
+        var swimmingDates = getSwimmingDates();
+        // ["2015-09-19", "2015-09-25"]
+
+        swimmingDates.forEach(function(date) {
+          // day = "2015-09-19"
+          $(".fc-day[data-date='" + date + "']").text('🏊');
+        })
+
+        function getSwimmingDates() {
+          var csv = localStorage.getItem("swimming-days"); // e.g., "2015-09-19,2015-09-25"
+          if (csv) {
+            return csv.split(",");
+          } else {
+            return [];
+          }
+        }
+
+        function saveRunningDate(date) {
+          var dates = getRunningDates();
+          dates.push(date);
+          localStorage.setItem("running-days", dates.join(","));
+        }
+
+        var runningDates = getRunningDates();
+        // ["2015-09-19", "2015-09-25"]
+
+        runningDates.forEach(function(date) {
+          // day = "2015-09-19"
+          $(".fc-day[data-date='" + date + "']").text('🏃');
+        })
+
+        function getRunningDates() {
+          var csv = localStorage.getItem("running-days"); // e.g., "2015-09-19,2015-09-25"
+          if (csv) {
+            return csv.split(",");
+          } else {
+            return [];
+          }
+        }
+
+        function saveRunningDate(date) {
+          var dates = getRunningDates();
+          dates.push(date);
+          localStorage.setItem("running-days", dates.join(","));
+        }
+
+
+    })
+
+
+
+    function calcSumActivity (b){
+      return(b + click)
+    }
+
+    var click = document.querySelector('.textcontent');
+
+    tempF.addEventListener('onclick', calcSumActivity);
+
+    function calcSumActivity(event) {
+      if (click.value.length > 0) {
+        click.value = calcSumActivity(click.value)
+      } else {
+        tempC.value = '';
+      }
+    }
+
+    </script>
+  </body>
+</html>

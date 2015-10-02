@@ -6,6 +6,53 @@
 <script src='lib/jquery.min.js'></script>
 <script src='lib/moment.min.js'></script>
 <script src='fullcalendar.js'></script>
+<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+
+<!-- Latest compiled and minified CSS -->
+
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    line-height: 1.4em;
+    background-image: url("coffee.png");
+    background-size:cover;
+  }
+
+  header {
+    font-size: 80px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  main {
+    margin: 2em auto;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 2em 3em;
+    max-width: 600px;
+
+  }
+
+  .emoji{
+    font-size: 1000px;
+    text-align: center;
+    vertical-align: text-top;
+
+
+  }
+
+#sumactivity{
+  padding-top: 50px;
+  text-align: center;
+}
+
+  </style>
 
     <meta charset="utf-8">
     <title>
@@ -13,9 +60,15 @@ Lili's Calendar
     </title>
   </head>
   <body>
+    <header>My No-Lazy Calendar </header>
     <main>
+
+
       <div id='calendar'></div>
+      <div id='sumactivity'></div>
+      Total Monthly:
     </main>
+
       <script>
       $(document).ready(function() {
 
@@ -32,22 +85,145 @@ Lili's Calendar
         $(".fc-day").on("click", function(event) {
           var day = event.target;
 
-          if (day.textContent == '') {
-            day.textContent = '🚶';
-          } else if (day.textContent == '🚶') {
-            day.textContent = '🏃';
-          } else if (day.textContent == '🏃') {
-            day.textContent = '🏊';
-          } else if (day.textContent == '🏃') {
-             day.textContent = '🏊';
-          } else if (day.textContent == '🏊') {
-              day.textContent = '💪';
-}
-})
 
+
+          if (day.textContent == '') {
+            day.innerHTML='<div class= "emoji">🚶</div>';
+            // to check
+            saveWalkingDate(day.getAttribute('data-date'));
+          } else if (day.textContent == '🚶') {
+
+            day.innerHTML='<div class= "emoji">🏃</div>';
+            saveRunningDate(day.getAttribute('data-date'));
+          } else if (day.textContent == '🏃') {
+            day.innerHTML='<div class= "emoji">🏊</div>';
+            saveSwimmingDate(day.getAttribute('data-date'));
+          } else if (day.textContent == '🏊') {
+              day.innerHTML='<div class= "emoji">💪</div>';
+          } else if (day.textContent == '💪') {
+                day.textContent = '';
+            saveLiftingDate(day.getAttribute('data-date'));
+          }
+        })
+
+
+        var swimmingDates = getSwimmingDates();
+        // ["2015-09-19", "2015-09-25"]
+
+        swimmingDates.forEach(function(date) {
+          // day = "2015-09-19"
+          $(".fc-day[data-date='" + date + "']").text('🏊');
+        })
+
+        function getSwimmingDates() {
+          var csv = localStorage.getItem("swimming-days"); // e.g., "2015-09-19,2015-09-25"
+          if (csv) {
+            return csv.split(",");
+          } else {
+            return [];
+          }
+        }
+
+// running function
+        function saveRunningDate(date) {
+          var dates = getRunningDates();
+          dates.push(date);
+          localStorage.setItem("running-days", dates.join(","));
+        }
+
+        var runningDates = getRunningDates();
+        // ["2015-09-19", "2015-09-25"]
+
+        runningDates.forEach(function(date) {
+          // day = "2015-09-19"
+          $(".fc-day[data-date='" + date + "']").text('🏃');
+        })
+
+        function getRunningDates() {
+          var csv = localStorage.getItem("running-days"); // e.g., "2015-09-19,2015-09-25"
+          if (csv) {
+            return csv.split(",");
+          } else {
+            return [];
+          }
+        }
+
+        function saveRunningDate(date) {
+          var dates = getRunningDates();
+          dates.push(date);
+          localStorage.setItem("running-days", dates.join(","));
+        }
 
 
     })
+
+// walking function
+    function saveWalkingDate(date) {
+      var dates = getWalkingDates();
+      dates.push(date);
+      localStorage.setItem("walking-days", dates.join(","));
+    }
+
+    var walkingDates = getWalkingDates();
+    // ["2015-09-19", "2015-09-25"]
+
+    walkingDates.forEach(function(date) {
+      // day = "2015-09-19"
+      $(".fc-day[data-date='" + date + "']").text('🚶');
+    })
+
+    function getWalkingDates() {
+      var csv = localStorage.getItem("walking-days"); // e.g., "2015-09-19,2015-09-25"
+      if (csv) {
+        return csv.split(",");
+      } else {
+        return [];
+      }
+    }
+
+    function saveWalkingDate(date) {
+      var dates = getRunningDates();
+      dates.push(date);
+      localStorage.setItem("walking-days", dates.join(","));
+    }
+
+
+    })
+
+    // lifting function
+            function saveliftingDate(date) {
+              var dates = getLiftingDates();
+              dates.push(date);
+              localStorage.setItem("lifting-days", dates.join(","));
+            }
+
+            var liftingDates = getLiftingDates();
+            // ["2015-09-19", "2015-09-25"]
+
+            liftingDates.forEach(function(date) {
+              // day = "2015-09-19"
+              $(".fc-day[data-date='" + date + "']").text('💪');
+            })
+
+            function getLiftingDates() {
+              var csv = localStorage.getItem("lifting-days"); // e.g., "2015-09-19,2015-09-25"
+              if (csv) {
+                return csv.split(",");
+              } else {
+                return [];
+              }
+            }
+
+            function saveLiftingDate(date) {
+              var dates = getLiftingDates();
+              dates.push(date);
+              localStorage.setItem("lifting-days", dates.join(","));
+            }
+
+
+        })
+
+
     </script>
   </body>
 </html>
