@@ -107,6 +107,13 @@ Lili's Calendar
         })
 
 
+
+        function saveSwimmingDate(date) {
+          var dates = getSwimmingDates();
+          dates.push(date);
+          localStorage.setItem("swimming-days", dates.join(","));
+        }
+
         var swimmingDates = getSwimmingDates();
         // ["2015-09-19", "2015-09-25"]
 
@@ -182,7 +189,7 @@ Lili's Calendar
     }
 
     function saveWalkingDate(date) {
-      var dates = getRunningDates();
+      var dates = getWalkingDates();
       dates.push(date);
       localStorage.setItem("walking-days", dates.join(","));
     }
